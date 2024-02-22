@@ -17,8 +17,26 @@ describe('06-Assertions',() => {
         //4- get element count
         cy.get('a[href]').should('have.length',73)
 
-        //5- find()
+        //5- find() and include.text
         cy.get('li').find("[href='/login']").should('include.text','Login')
+
+        //6- within()
+        cy.get("[class='shop-menu pull-right']").within( () => {
+            cy.get("[href='/login']").should('include.text','Login')
+        }
+        )
+
+        //7- then()
+        cy.get(".row > .pull-left").then( emailtext => {
+                expect(emailtext).to.contain('Copyright')           
+        })
+
+        //8- invoke()
+        cy.get(".row > .pull-left").invoke('text').
+                then(emailtext2 => {expect(emailtext2).to.contain('Copyright')
+            })
+
+
     })
 
      
