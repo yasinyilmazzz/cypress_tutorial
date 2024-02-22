@@ -5,7 +5,11 @@ describe('My first Cypress test', () => {
         cy.visit('/')          
     })
 
-    it('', () =>{
+    it.skip('Skipped this test with skip', () =>{
+
+    })
+
+    it('04_Click function', () =>{
         //case: click settings textlink in footer
         cy.get('.ayzqOc').click()
     })
