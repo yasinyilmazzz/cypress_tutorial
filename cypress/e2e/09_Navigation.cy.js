@@ -21,7 +21,20 @@ describe('Navigation',() => {
 
     })
         
-    it.skip('Forward', () =>{
+    it('Chaining', () =>{
+
+        cy.visit("https://www.amazon.com/")
+        cy.get('#nav-orders').click()
+        cy.wait(3000)
+
+        // go back
+        cy.go('back').go('forward').wait(3000).go(-1).go(1)
+        cy.wait(3000)
+
+        //cy.reload(true) cleaning browser cache
+        cy.reload(true)
+
+
 
     })
     
